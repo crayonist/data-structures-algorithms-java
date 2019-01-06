@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SingleList",
+            "request": "launch",
+            "mainClass": "com.labi.lists.singlelist.SingleList",
+            "projectName": "data-structures"
+        }
+    ]
+}
