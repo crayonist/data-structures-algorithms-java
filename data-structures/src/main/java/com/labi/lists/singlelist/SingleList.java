@@ -1,9 +1,9 @@
 package com.labi.lists.singlelist;
 
+import java.util.LinkedList;
+
 /**
- * 单链表
- * 需要一个链表节点Node，
- * 节点里面包含一个数据，一个后继指针next，也称next引用，存放下一个节点的内存地址
+ * 单链表 需要一个链表节点Node， 节点里面包含一个数据，一个后继指针next，也称next引用，存放下一个节点的内存地址
  */
 public class SingleList<E> {
     
@@ -17,8 +17,26 @@ public class SingleList<E> {
         return size;
     }
 
-    public boolean contains() {
-        return false;
+    public boolean contains(Object o) {
+        Node<E> p = head;
+        if (o == null) {
+            while(p != null) {
+                if (p.elementData != null) {
+                    p = p.next;
+                } else {
+                    break;
+                }
+            }
+        } else {
+            while(p != null) {
+                if (!o.equals(p.elementData)) {
+                    p = p.next;
+                } else {
+                    break;
+                }
+            }
+        }
+        return p != null;
     }
 
     /**
@@ -118,13 +136,33 @@ public class SingleList<E> {
         System.out.println();
     }
 
+    /**
+     * 单链表节点
+     */
+    public class Node<T> {
+        
+        public E elementData;
+
+        public Node<E> next;
+
+        public Node() {}
+
+        public Node(E e, Node<E> nextNode) {
+            this.elementData = e;
+            this.next = nextNode;
+        }
+
+    }
+
     public static void main(String[] args) {
         SingleList<String> list = new SingleList<>();
         list.linkFirst("A");
         list.linkFirst("B");
         list.linkFirst("C");
         list.linkLast("D");
-        list.add("E", 5);
+        list.add("E", 4);
+        list.add(null);
         list.printAll();
+        System.out.println(list.contains(null));
     }
 }
