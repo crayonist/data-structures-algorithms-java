@@ -1,6 +1,5 @@
 package com.labi.lists.singlelist;
 
-import java.util.LinkedList;
 
 /**
  * 单链表 需要一个链表节点Node， 节点里面包含一个数据，一个后继指针next，也称next引用，存放下一个节点的内存地址
@@ -55,6 +54,11 @@ public class SingleList<E> {
      */
     public void linkLast(E e) {
         Node<E> p = head;
+        if (p == null) {
+            Node<E> newNode = new Node<>(e, null);
+            head = newNode;
+            return;
+        }
         while(p.next != null) {
             p = p.next;
         }
@@ -156,12 +160,14 @@ public class SingleList<E> {
 
     public static void main(String[] args) {
         SingleList<String> list = new SingleList<>();
+        list.linkLast("D");
+        list.linkLast("EE");
         list.linkFirst("A");
         list.linkFirst("B");
         list.linkFirst("C");
-        list.linkLast("D");
         list.add("E", 4);
         list.add(null);
+        list.add("FF");
         list.printAll();
         System.out.println(list.contains(null));
     }
